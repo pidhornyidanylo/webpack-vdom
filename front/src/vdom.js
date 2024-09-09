@@ -18,7 +18,7 @@ export const createVNode = (tagName, props = {}, ...children) => {
     const {
       tagName,
       props,
-      children
+      children = []
     } = vNode;
   
     const node = document.createElement(tagName);
@@ -102,7 +102,7 @@ export const createVNode = (tagName, props = {}, ...children) => {
     });
   };
   
-  const patchChildren = (parent, vChildren, nextVChildren) => {
+  const patchChildren = (parent, vChildren = [], nextVChildren = []) => {
     parent.childNodes.forEach((childNode, i) => {
       patchNode(childNode, vChildren[i], nextVChildren[i]);
     });
