@@ -10,7 +10,7 @@ const createVApp = store => {
   const books = store?.state?.books ?? [];
   
     return (
-      <div {...{ class: "container" }}>
+      <div {...{ className: "container" }}>
         <AddBookForm />
         <BooksTable books={books} />
       </div>

@@ -1,0 +1,48 @@
+.bookItem {
+    padding: 5px;
+    display: flex;
+    align-items: start;
+    background-color: rgb(113, 177, 177);
+    border-radius: 10px;
+    gap: 30px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    cursor: pointer;
+    transition: all .05s ease-in;
+    -webkit-transition: all .05s ease-in;
+    -moz-transition: all .05s ease-in;
+    -ms-transition: all .05s ease-in;
+    -o-transition: all .05s ease-in;
+}
+
+.bookItem img {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.bookInfo {
+    padding-top: 10px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bookInfo p {
+    padding: 0;
+    margin: 0;
+}
+
+
+.bookItem:hover {
+    transform: scale(1.005);
+    -webkit-transform: scale(1.005);
+    -moz-transform: scale(1.005);
+    -ms-transform: scale(1.005);
+    -o-transform: scale(1.005);
+}
