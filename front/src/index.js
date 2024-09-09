@@ -8,6 +8,7 @@ import "./style.css";
 
 const createVApp = store => {
   const books = store?.state?.books ?? [];
+  
     return (
       <div {...{ class: "container" }}>
         <AddBookForm />
@@ -23,7 +24,7 @@ const createVApp = store => {
       this.state = nextState;
       this.onStateChanged();
     },
-    fetchBooks() {
+    initialFetchBooks() {
       if (this.state.books.length === 0) {
         fetch("http://localhost:8081/bookstore")
           .then(res => res.json())
@@ -34,6 +35,20 @@ const createVApp = store => {
             console.error("Error fetching books:", err);
           });
       }
+    },
+    forcedFetchBooks() {
+      let count = 0;
+      if(count === 0) {
+        fetch("http://localhost:8081/bookstore")
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ books: data });
+          count = 1;
+        })
+        .catch(err => {
+          console.error("Error fetching books:", err);
+        });
+      }
     }
   };
   
@@ -43,4 +58,4 @@ const createVApp = store => {
     app = patch(createVApp(store), app);
   };
   
-  store.fetchBooks();
+  store.initialFetchBooks();

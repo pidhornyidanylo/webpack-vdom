@@ -11,7 +11,7 @@ export const createVNode = (tagName, props = {}, ...children) => {
   };
   
   export const createDOMNode = vNode => {
-    if (typeof vNode === "string") {
+    if (typeof vNode === "string" || typeof vNode === "number") {
       return document.createTextNode(vNode);
     }
   

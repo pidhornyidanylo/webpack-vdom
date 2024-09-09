@@ -33,7 +33,8 @@ const AddBookForm = () => {
             body: formDataForRequest
         })
         if(response.ok) {
-            console.log("Successfully added book to the store")
+            console.log("Successfully added book to the store");
+            store.forcedFetchBooks();
         } else {
             console.log("Some error occured")
         }
