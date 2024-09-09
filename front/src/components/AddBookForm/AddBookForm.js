@@ -21,10 +21,22 @@ const AddBookForm = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const { books } = store.state;
-        store.setState({ ...store.state, books: [...books, { id: books.length + 1, ...formData }] });
+        const formDataForRequest = new FormData();
+        formDataForRequest.append("title", formData.title);
+        formDataForRequest.append("author", formData.author);
+        formDataForRequest.append("price", formData.price);
+        formDataForRequest.append("cover", formData.cover);
+        const response = await fetch("http://localhost:8081/bookstore", { 
+            method: "POST", 
+            body: formDataForRequest
+        })
+        if(response.ok) {
+            console.log("Successfully added book to the store")
+        } else {
+            console.log("Some error occured")
+        }
     };
 
     return (
