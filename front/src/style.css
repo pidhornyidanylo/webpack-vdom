@@ -1,0 +1,23 @@
+:root {
+    --main-text-color: rgb(228, 228, 228);
+    --input-button-background: rgb(202, 213, 223);
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    color: var(--main-text-color);
+    background-color: darkslategray;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#app {
+    max-width: 1200px;
+    height: 100vh;
+    padding: 0 20px;
+}
