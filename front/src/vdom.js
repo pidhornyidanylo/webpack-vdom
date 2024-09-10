@@ -110,57 +110,57 @@ const patchProps = (node, props, nextProps) => {
   });
 };
 
-const hasTheKey = (children, key) => {
-  let keymatched = false;
-  for (let i = 0; i < children.length; i++) {
-    if (key == children[i].key) {
-      keymatched = true;
-      break
-    };
-  }
-  return keymatched;
-}
+// const hasTheKey = (children, key) => {
+//   let keymatched = false;
+//   for (let i = 0; i < children.length; i++) {
+//     if (key == children[i].key) {
+//       keymatched = true;
+//       break
+//     };
+//   }
+//   return keymatched;
+// }
 
-const patchKeys = (parent, vDomChildren, domChildren) => {
-  //remove unmatched keys from dom
-  for (let i = 0; i < domChildren.length; i++) {
-    let dnode = domChildren[i];
-    let key = dnode.key;
-    if (key) {
-      if (!hasTheKey(vDomChildren, key)) {
-        dnode.remove();
-      }
-    }
-  }
-  //adding keys to dom
-  for (let i = 0; i < vDomChildren.length; i++) {
-    let vnode = vDomChildren[i];
-    let key = vnode.key;
-    if (key) {
-      if (!hasTheKey(domChildren, key)) {
-        let nthIndex = [].indexOf.call(parent.children, vnode);
-        if (domChildren[nthIndex]) {
-          domChildren[nthIndex].before(vnode.cloneNode(true))
-        } else {
-          parent.appendChild(createDOMNode(vnode))
-        }
-      }
-    }
-  }
-}
+// const patchKeys = (parent, vDomChildren, domChildren) => {
+//   //remove unmatched keys from dom
+//   for (let i = 0; i < domChildren.length; i++) {
+//     let dnode = parent[i];
+//     let key = dnode.key;
+//     if (key) {
+//       if (!hasTheKey(vDomChildren, key)) {
+//         dnode.remove();
+//       }
+//     }
+//   }
+//   //adding keys to dom
+//   for (let i = 0; i < vDomChildren.length; i++) {
+//     let vnode = vDomChildren[i];
+//     let key = vnode.key;
+//     if (key) {
+//       if (!hasTheKey(domChildren, key)) {
+//         let nthIndex = [].indexOf.call(parent.children, vnode);
+//         if (domChildren[nthIndex]) {
+//           domChildren[nthIndex].before(vnode.cloneNode(true))
+//         } else {
+//           parent.appendChild(createDOMNode(vnode))
+//         }
+//       }
+//     }
+//   }
+// }
 
 const patchChildren = (parent, vChildren = [], nextVChildren = []) => {
   const hasKeys = nextVChildren.some(vChild => vChild && vChild.key != null);
-  if (hasKeys) {
-    patchKeys(parent, nextVChildren, vChildren);
-  } else {
+  // if (hasKeys) {
+  //   patchKeys(parent, nextVChildren, vChildren);
+  // } else {
     parent.childNodes.forEach((childNode, i) => {
       patchNode(childNode, vChildren[i], nextVChildren[i]);
     });
     nextVChildren.slice(vChildren.length).forEach(vChild => {
       parent.appendChild(createDOMNode(vChild));
     });
-  }
+  // }
 };
 
 export const patch = (nextVNode, node) => {
