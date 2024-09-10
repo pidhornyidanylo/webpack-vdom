@@ -9,8 +9,7 @@ module.exports = {
         publicPath: '/',
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
@@ -21,6 +20,10 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.svg$/,
+                use: 'file-loader',
+              },
         ],
     },
     devServer: {

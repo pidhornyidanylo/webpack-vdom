@@ -4,17 +4,17 @@
     align-items: start;
     background-color: rgb(113, 177, 177);
     border-radius: 10px;
-    gap: 30px;
+    gap: 15px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    cursor: pointer;
-    transition: all .05s ease-in;
-    -webkit-transition: all .05s ease-in;
-    -moz-transition: all .05s ease-in;
-    -ms-transition: all .05s ease-in;
-    -o-transition: all .05s ease-in;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    position: relative;
 }
 
 .bookItem img {
@@ -38,11 +38,18 @@
     margin: 0;
 }
 
-
 .bookItem:hover {
-    transform: scale(1.005);
-    -webkit-transform: scale(1.005);
-    -moz-transform: scale(1.005);
-    -ms-transform: scale(1.005);
-    -o-transform: scale(1.005);
+    background-color: rgb(133, 191, 191);
+}
+
+.deleteButton {
+    position: absolute;
+    top: 90%;
+    right: 3px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    cursor: pointer;
 }

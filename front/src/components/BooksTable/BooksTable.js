@@ -5,7 +5,7 @@ import "./BooksTable.css";
 const BooksTable = ({ books }) => {
   return (
     <ul className="booksList">
-      {books.map(book => <BookItem book={book} />)}
+      {books.map((book, index) => <BookItem book={book} index={index} />)}
     </ul>
   );
 };

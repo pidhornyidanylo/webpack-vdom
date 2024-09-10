@@ -126,7 +126,6 @@ const patchKeys = (parent, vDomChildren, domChildren) => {
   for (let i = 0; i < domChildren.length; i++) {
     let dnode = domChildren[i];
     let key = dnode.key;
-    console.log(key);
     if (key) {
       if (!hasTheKey(vDomChildren, key)) {
         dnode.remove();
@@ -136,20 +135,13 @@ const patchKeys = (parent, vDomChildren, domChildren) => {
   //adding keys to dom
   for (let i = 0; i < vDomChildren.length; i++) {
     let vnode = vDomChildren[i];
-    console.log("vDomChildren: ", vDomChildren);
     let key = vnode.key;
-    console.log("key: ", key);
     if (key) {
       if (!hasTheKey(domChildren, key)) {
-        console.log(parent)
-        console.log("Key is not present in the DOM")
         let nthIndex = [].indexOf.call(parent.children, vnode);
-        console.log(nthIndex)
         if (domChildren[nthIndex]) {
-          console.log("here")
           domChildren[nthIndex].before(vnode.cloneNode(true))
         } else {
-          console.log("here else")
           parent.appendChild(createDOMNode(vnode))
         }
       }

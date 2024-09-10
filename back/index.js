@@ -21,7 +21,9 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({ storage });
+const upload = multer({
+    storage
+});
 
 const db = mySql.createConnection({
     host: process.env.SQL_HOST,
@@ -43,7 +45,11 @@ app.get("/bookstore", (req, res) => {
 })
 
 app.post("/bookstore", upload.single("cover"), (req, res) => {
-    const { title, author, price } = req.body;
+    const {
+        title,
+        author,
+        price
+    } = req.body;
     const cover = req.file ? req.file.path : null;
 
     if (!title || !author) {
@@ -56,6 +62,17 @@ app.post("/bookstore", upload.single("cover"), (req, res) => {
         return res.status(201).json("Book added successfully!");
     });
 });
+
+app.delete("/bookstore", (req, res) => {
+    const {
+        id
+    } = req.body;
+    const sql = `DELETE FROM booksalso WHERE id=${id}`;
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data);
+    });
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

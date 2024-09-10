@@ -8,7 +8,6 @@ import "./style.css";
 
 const createVApp = store => {
   const books = store?.state?.books ?? [];
-  
     return (
       <div {...{ className: "container" }}>
         <AddBookForm />
@@ -39,9 +38,11 @@ const createVApp = store => {
     forcedFetchBooks() {
       let count = 0;
       if(count === 0) {
+        console.log("forced")
         fetch("http://localhost:8081/bookstore")
         .then(res => res.json())
         .then(data => {
+          console.log(data);
           this.setState({ books: data });
           count = 1;
         })
